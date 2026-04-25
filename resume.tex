@@ -1,146 +1,103 @@
-% ATS / Workday-oriented layout: standard fonts, linear text, minimal decoration.
-% Body wording matches resume.tex; preamble and macros differ for parse safety.
-\documentclass[9pt,letterpaper]{article}
+\documentclass[10pt]{article}
+
+\usepackage[a4paper,top=0.45in,bottom=0.45in,left=0.55in,right=0.55in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage{microtype}
-\usepackage[top=0.45in,bottom=0.45in,left=0.55in,right=0.55in]{geometry}
 \usepackage{enumitem}
-\usepackage{setspace}
-\usepackage[hidelinks,pdfencoding=auto]{hyperref}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
 
-\hypersetup{pdftitle={Resume - Sunilprakash Jaisankar},pdfauthor={Sunilprakash Jaisankar}}
+\input{glyphtounicode}
+\pdfgentounicode=1
 
-\pagenumbering{gobble}
-\raggedright
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
-\setstretch{0.94}
-\setlist[itemize]{leftmargin=1.1em, topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt, label={--}}
+\setlist[itemize]{leftmargin=1.2em, topsep=1pt, itemsep=1pt, parsep=0pt, partopsep=0pt}
+\pagestyle{empty}
 
-% Tight section bands: padding before/after the rule only (match ~0.456ex web-style hr gaps).
-\newlength{\sectionrulegap}
-\setlength{\sectionrulegap}{1ex}
-\newlength{\sectioncontentgap}
-\setlength{\sectioncontentgap}{2.8pt}
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{7pt}{4pt}
 
-\newcommand{\resumesection}[1]{%
-  \par\vspace{\sectionrulegap}%
-  \noindent\textbf{\MakeUppercase{#1}}\par
-  \nointerlineskip
-  \vspace{\sectionrulegap}%
-  \noindent\rule{\linewidth}{0.35pt}\par
-  \nointerlineskip
-  \vspace{\sectionrulegap}%
+\newcommand{\expentry}[4]{
+\textbf{#1} \hfill #2 \\
+#3 \hfill #4
 }
-
-\newcommand{\job}[4]{%
-  \textbf{#1} \hfill #2\\%
-  \textit{#3} \hfill \textit{#4}\par
-  \vspace{0pt}%
-}
-
-\newcommand{\sep}{ | }
 
 \begin{document}
-\begin{center}
-{\LARGE\textbf{Sunilprakash Jaisankar}}\\[3.5pt]
-{\small Chennai, Tamil Nadu, India \sep 91 97910 27666 \sep \href{mailto:sunilprakash.jaisankar.mail@gmail.com }{sunilprakash.jaisankar.mail@gmail.com } \sep \href{https://www.linkedin.com/in/sunilprakash-jaisankar/}{LinkedIn} \sep\href{https://portfolio-mu-kohl-yjbcqzs4dn.vercel.app/}{Portfolio}}
-\end{center}
-\vspace{-10pt}
 
-\resumesection{Summary}
-\textbf{Full-Stack Developer} with \textbf{4+ years} of experience designing and delivering \textbf{scalable systems}, with a strong focus on \textbf{backend engineering} using \textbf{Java, Spring Boot, WebFlux, SQL Server, Kafka, and Azure}, complemented by \textbf{frontend experience} in \textbf{Angular} and \textbf{React}. Skilled in \textbf{microservices architecture}, \textbf{REST API design}, \textbf{database optimization}, and \textbf{event-driven systems}. Proven track record of reducing \textbf{technical debt}, improving \textbf{query performance}, and delivering \textbf{reliable, high-availability platforms} in \textbf{enterprise retail environments}.
-\vspace{\sectioncontentgap}
+{\Large\textbf{Sunilprakash Jaisankar}}\\[2pt]
+Chennai, Tamil Nadu, India \;|\; 91 97910 27666 \;|\; sunilprakash.jaisankar.mail@gmail.com \\linkedin.com/in/sunilprakash-jaisankar \;|\; https://portfolio-sj-mail.vercel.app/
 
-\resumesection{Technical Skills}
-\textbf{Languages:} Java, Python, Bash, TypeScript \\
-\textbf{Frameworks:} Spring Boot, Spring Security, Spring Data JPA, Vert.x, Django, Hibernate \\
-\textbf{Frontend:} React, Next.js, Tailwind CSS, HTML5  \\
-\textbf{Databases:} SQL Server, PostgreSQL, MongoDB, Redis, Elasticsearch \\
-\textbf{Messaging \& Streaming:} Apache Kafka, MQTT, RabbitMQ \\
-\textbf{Cloud \& DevOps:} Azure, GCP, Docker, Kubernetes, Jenkins, Git, GitHub, Linux, Grafana, Kibana \\
-\textbf{Architecture:} Microservices, REST APIs, gRPC, Event-Driven Architecture, CQRS, CI/CD, SFTP \\
-\textbf{Testing \& Quality:} JUnit, Mockito, Integration Testing, SonarQube, Maven, Gradle \\
-\textbf{Platforms:} OpenText Media Management, SAP, Stripe, Nginx, MLflow, Airflow
-\vspace{\sectioncontentgap}
+\section*{SUMMARY}
+Full-Stack Developer with 4+ years of experience delivering scalable systems, focused on backend engineering with Java, Spring Boot, WebFlux, SQL Server, Kafka, and Azure, with frontend experience in Angular and React. Strong in microservices architecture, REST API design, database optimization, and event-driven systems. Proven impact in reducing technical debt, improving query performance, and delivering reliable high-availability platforms.
 
-\resumesection{Professional Experience}
-\job{Sobeys Inc.}{May 2023 -- April 2026}{Backend Developer}{Stellarton, NS, Canada}
+
+\section*{PROFESSIONAL EXPERIENCE}
+\expentry{Sobeys Inc.}{May 2023 -- Apr 2026}{Backend Developer}{Stellarton, NS, Canada}
 \begin{itemize}
-  \item Tuned SQL Server stored procedures - 98\% fewer reads, 42\% fewer writes, reduced load time from 1 minute to 3 seconds.
+  \item Tuned SQL Server stored procedures: 98\% fewer reads, 42\% fewer writes, \& load time reduced from 1 min to 3 secs.
   \item Designed and delivered REST API integration pipelines for partner onboarding, reducing cycle time by 70\%.
-  \item Modernized OTMM to stateless Spring Boot REST services, eliminating 40\% technical debt and upgrading to Java 11.
+  \item Modernized OTMM to Spring Boot REST services, eliminating 40\% technical debt \& upgrading to Java 11.
   \item Migrated 80 TB of image and metadata assets into OTMM, building indexing and centralized search across teams.
   \item Engineered event-driven Azure pipelines for asset distribution across Sobeys, Voila, Wholesale, and IGA via SFTP.
   \item Delivered Azure DevOps CI/CD with a blue-green deployment strategy, achieving zero-downtime releases.
-  \item Built an automated SAP integration layer for product data synchronization across inventory and merchandising systems.
   \item Collaborated on peer code reviews and quality gates to maintain reliable production releases.
   \item Tech Stack: Java, Spring Boot, SQL Server, Kafka Streams, MQTT, OpenText Media Management, SAP, Azure.
 \end{itemize}
-\vspace{\sectioncontentgap}
-\textbf{FleetPulse -- Real-Time Telemetry Platform} \hfill \textit{Internal Initiative at Sobeys}\\
+
+\textbf{FleetPulse -- Real-Time Telemetry Platform (Internal Sobeys Inc. Initiative)} 
+% \\ \textit{Project under Sobeys Inc.}
 \begin{itemize}
-  \item Built a reactive Spring WebFlux real-time telemetry platform for refrigerated-truck ingestion via MQTT \& Kafka
-  \item Engineered streaming pipelines with de-duplication, normalization, and alerting logic, serving a fleet of 20+ vehicles.
+  \item Built a reactive Spring WebFlux telemetry platform for refrigerated-truck ingestion via MQTT and Kafka.
+  \item Engineered streaming pipelines with de-duplication, normalization, and alerting logic for a fleet of 20+ vehicles.
   \item Delivered MongoDB-backed persistence and Grafana dashboards for real-time fleet monitoring.
+  \item Implemented backpressure using Reactor Flux/Mono for 20K+ events per minute.
+  \item Built fault-tolerant pipelines with retry, circuit breaker, and dead-letter queue handling.
   \item Tech Stack: Java, Spring WebFlux, MQTT, Kafka Streams, MongoDB, Grafana, Docker.
 \end{itemize}
-\vspace{\sectioncontentgap}
-\job{Weever}{Jun 2022 -- Apr 2023}{Full Stack Developer}{Hamilton, Ontario, Canada}
+
+\expentry{Weever}{Jun 2022 -- Apr 2023}{Full Stack Developer}{Hamilton, Ontario, Canada}
 \begin{itemize}
-  \item Delivered end-to-end features, translating requirements into Angular/React workflows \& high-performance Node.js APIs.
-  \item Built data-capture and reporting services with validation, fault-tolerant error handling, and business logic across modules.
-  \item Implemented caching and query optimization strategies, cutting database calls by 25--40\% and improving API throughput.
+  \item Delivered end-to-end features from requirements to Angular/React workflows and high-performance Node.js APIs.
+  \item Built data-capture and reporting services with validation, fault-tolerant error handling, and domain business logic.
+  \item Implemented caching and query optimization, cutting database calls by 25--40\% and improving API throughput.
   \item Optimized SQL queries and API payloads, reducing response times by 30--50\% and payload size by 20--35\%.
-  \item Owned feature delivery from design through production, ensuring reliability and performance in agile environments.
   \item Tech Stack: TypeScript, JavaScript, Angular, React, Node.js, REST APIs, PostgreSQL, Docker, Git.
 \end{itemize}
-\vspace{\sectioncontentgap}
 
-\resumesection{Project}
-\textbf{Gusto Kitchen -- Microservices Backend Platform} \hfill \underline{\href{https://gustokitchen.hopto.org/}{gustokitchen.hopto.org}}\\
+\section*{PROJECTS}
+\textbf{Gusto Kitchen -- Microservices Backend Platform} \hfill \underline{\href{https://gustokitchen.hopto.org/}{gustokitchen.hopto.org}}
+% \\ \textit{Personal Project}
 \begin{itemize}
-
-\item Built a responsive Next.js frontend with SSR, dynamic routing, and reusable Tailwind-based component architecture.
-\item Architected a Spring Boot microservices backend (identity, order, payment) behind a secure API gateway.
-\item Engineered event-driven order workflows using Kafka with Stripe webhook-based asynchronous payment processing.
-\item Implemented Saga-based transactional consistency across distributed services using Kafka event choreography.
-\item Deployed on GCP using Docker and Nginx reverse proxy; enforced CI/CD quality gates via Jenkins and SonarQube.
-  % \item Architected microservices backend with identity, order, and payment domains behind an API gateway.
-  % \item Engineered event-driven order workflows using Kafka with Stripe web-hook-based payment processing.
-  % \item Designed domain-isolated PostgreSQL schemas with Spring Data JPA; implemented Google OAuth for authentication.
-  % \item Deployed on GCP with Docker and Nginx reverse proxy; enforced CI/CD quality gates via Jenkins and SonarQube.
-  % \item Implemented transactional consistency across services using the Saga pattern with Kafka event choreography.
+  \item Built a responsive Next.js frontend with server-side rendering, dynamic routing, and reusable Tailwind components.
+  \item Architected a Spring Boot microservices backend (identity, order, payment) behind a secure API gateway.
+  \item Engineered event-driven order workflows using Kafka with Stripe webhook-based asynchronous payment processing.
+  \item Implemented Saga-based transactional consistency across distributed services using Kafka event choreography.
+  \item Deployed on GCP using Docker and Nginx reverse proxy with CI/CD quality gates via Jenkins and SonarQube.
   \item Tech Stack: Next.js, TypeScript, Tailwind CSS, Spring Boot, Kafka, PostgreSQL, Docker, GCP.
 \end{itemize}
-\vspace{\sectioncontentgap}
 
-% \textbf{MLOps Template -- Personal Project}\\
-% \begin{itemize}
-%   \item Built a production-grade MLOps pipeline automating model training, tracking, versioning, and deployment.
-%   \item Developed Django REST API with model serving endpoints for real-time inference; containerized with Docker.
-%   \item Tech Stack: Python, MLflow, Airflow, DVC, Docker, Django, Git-Action.
-% \end{itemize}
-% \vspace{3.5pt}
+\section*{TECHNICAL SKILLS}
+\textbf{Languages:} Java, Python, Bash, TypeScript \\
+\textbf{Frameworks:} Spring Boot, Spring Security, Spring Data JPA, Vert.x, Django, Hibernate \\
+\textbf{Frontend:} Angular, React, Next.js, Tailwind CSS, HTML5 \\
+\textbf{Databases:} SQL Server, PostgreSQL, MongoDB, Redis, Elasticsearch \\
+\textbf{Messaging and Streaming:} Apache Kafka, MQTT, RabbitMQ \\
+\textbf{Cloud and DevOps:} Azure, GCP, Docker, Kubernetes, Jenkins, Git, GitHub, Linux, Grafana, Kibana \\
+\textbf{Architecture:} Microservices, REST APIs, gRPC, Event-Driven Architecture, CQRS, CI/CD, SFTP \\
+\textbf{Testing and Quality:} JUnit, Mockito, Integration Testing, SonarQube, Maven, Gradle \\
+\textbf{Platforms:} OpenText Media Management, SAP, Stripe, Nginx, MLflow, Airflow
 
-% \textbf{Text Summarizer -- MEng Major Project}\\
-% \begin{itemize}
-%   \item Engineered abstractive text summarization system using Seq2Seq LSTM encoder-decoder with attention mechanism.
-%   \item Trained a deep network of 30.8M-parameters in 230M Amazon reviews, achieving 72\% validation accuracy.
-%   \item Tech Stack: Python, TensorFlow, Seq2Seq, LSTM, Attention, NLP.
-% \end{itemize}
-% \vspace{3.5pt}
 
-\resumesection{Education}
-\textbf{McMaster University} \hfill \textit{Hamilton, Ontario, Canada}\\
-\textbf{Master of Engineering} in Systems \& Technology \hfill \textit{Sep 2021 -- Nov 2022}\\
-\textbf{Major:} Machine Learning and Neural Networks \hfill \text CGPA: 3.9/4.0
-\vspace{\sectioncontentgap}
+\section*{EDUCATION}
+\textbf{McMaster University} \hfill Hamilton, Ontario, Canada \\
+Master of Engineering in Systems and Technology \hfill Sep 2021 -- Nov 2022 \\
+Specialization: Machine Learning and Neural Networks \hfill CGPA: 3.9/4.0
 
-\textbf{SRM Institute of Science and Technology} \hfill \textit{Chennai, Tamil Nadu, India}\\
-\textbf{Bachelor of Engineering} in Computer Science \& Technology \hfill \textit{Jul 2015 -- May 2019}\\
-\textbf{Major:} Software Development \hfill \text CGPA: 3.1/4.0
+\vspace{3pt}
+\textbf{SRM Institute of Science and Technology} \hfill Chennai, Tamil Nadu, India \\
+Bachelor of Engineering in Computer Science and Technology \hfill Jul 2015 -- May 2019 \\
+Major: Software Development \hfill CGPA: 3.1/4.0
 
 \end{document}
